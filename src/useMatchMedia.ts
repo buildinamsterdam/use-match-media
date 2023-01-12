@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+
 import MatchMediaContext from "./MatchMediaContext";
 
 /**
@@ -10,10 +11,10 @@ import MatchMediaContext from "./MatchMediaContext";
  * of any unique query. Defaults to `false`.
  *
  * @example
- * useMatchMedia('(pointer: coarse)') -> Checks if the browser matches coarse;
+ * useMatchMedia("(pointer: coarse)") -> Checks if the browser matches coarse;
  * device of limited accuracy (touch).
  *
- * @example useMatchMedia('(min-width: 600px)') -> Checks if the browser
+ * @example useMatchMedia("(min-width: 600px)") -> Checks if the browser
  * matches a minimum width of 600px.
  *
  * @returns matches - `true` / `false` if the device matches the query, or

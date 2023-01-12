@@ -46,7 +46,7 @@ Then use the hook in your component.
 import useMatchMedia from "@buildinams/use-match-media";
 
 const MyComponent = () => {
-  const isTouch = useMatchMedia("coarse");
+  const isTouch = useMatchMedia("(pointer: coarse)");
   ...
 };
 ```

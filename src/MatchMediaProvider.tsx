@@ -1,4 +1,5 @@
 import { memo, useMemo, useRef } from "react";
+
 import MatchMediaContext from "./MatchMediaContext";
 import { EventHandler, ProviderProps, Queries } from "./types";
 

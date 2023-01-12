@@ -1,5 +1,3 @@
 export { default as MatchMediaProvider } from "./MatchMediaProvider";
-
+export type { EventHandler, ProviderProps, Queries, Query } from "./types";
 export { default } from "./useMatchMedia";
-
-export type { EventHandler, Query, Queries, ProviderProps } from "./types";
