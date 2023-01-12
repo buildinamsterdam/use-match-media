@@ -1,19 +1,9 @@
 import { renderHook } from "@testing-library/react";
 import MatchMediaMock from "jest-matchmedia-mock";
 
-import useMatchMedia, { MatchMediaProvider } from "../lib";
+import useMatchMedia from "../lib";
 
 let matchMedia: MatchMediaMock;
-
-/**
- * Small helper function that simply returns `renderHook` for `useMatchMedia`
- * with `MatchMediaProvider` as a wrapper.
- */
-const renderUseMatchMedia = (query: string, defaultValue?: boolean) => {
-  return renderHook(() => useMatchMedia(query, defaultValue), {
-    wrapper: MatchMediaProvider,
-  });
-};
 
 describe("The hook", () => {
   beforeEach(() => {
@@ -27,7 +17,7 @@ describe("The hook", () => {
   it("should return 'false' if query doesn't match", () => {
     matchMedia.useMediaQuery("(pointer: fine)");
 
-    const { result } = renderUseMatchMedia("(pointer: coarse)");
+    const { result } = renderHook(() => useMatchMedia("(pointer: coarse)"));
 
     expect(result.current).toEqual(false);
   });
@@ -35,15 +25,24 @@ describe("The hook", () => {
   it("should return 'true' if query matches", () => {
     matchMedia.useMediaQuery("(pointer: coarse)");
 
-    const { result } = renderUseMatchMedia("(pointer: coarse)");
+    const { result } = renderHook(() => useMatchMedia("(pointer: coarse)"));
 
     expect(result.current).toEqual(true);
+  });
+
+  it("should only create one listener for the same query", async () => {
+    const query = "(pointer: coarse)";
+
+    renderHook(() => useMatchMedia(query));
+    renderHook(() => useMatchMedia(query));
+
+    expect(matchMedia.getListeners(query).length).toEqual(1);
   });
 
   it("should cleanup after unmounting", () => {
     const query = "(pointer: coarse)";
 
-    const { unmount } = renderUseMatchMedia(query);
+    const { unmount } = renderHook(() => useMatchMedia("(pointer: coarse)"));
 
     expect(matchMedia.getListeners(query).length).toEqual(1);
 
