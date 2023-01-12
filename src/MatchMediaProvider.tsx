@@ -68,7 +68,7 @@ const MatchMediaProvider = ({ children }: ProviderProps) => {
       getMatchQuery: (query: string, defaultValue = false) => {
         const current = queries.current[query];
 
-        // If query already exists, return its matches value, else default value
+        // If query already exists, return its matched value, else default value
         return current ? current.matchMedia.matches : defaultValue;
       },
     };
