@@ -22,25 +22,7 @@ npm i @buildinams/use-match-media
 
 ## Usage
 
-The following examples are all in [Next.js](https://nextjs.org/) but this hook can be used in any React application.
-
-First setup the context provider in your `_app.tsx` file.
-
-```tsx
-import { MatchMediaProvider } from "@buildinams/use-match-media";
-
-const MyApp = ({ Component }) => {
-  return (
-    <MatchMediaProvider>
-      <Component />
-    </MatchMediaProvider>
-  );
-};
-
-export default MyApp;
-```
-
-Then use the hook in your component.
+To use the library simply import the hook and pass any custom media query.
 
 ```tsx
 import useMatchMedia from "@buildinams/use-match-media";
@@ -50,6 +32,35 @@ const MyComponent = () => {
   ...
 };
 ```
+
+You can even use multiple queries in a single call. Though we recommend using separate hooks for each query to maximize performance.
+
+```tsx
+import useMatchMedia from "@buildinams/use-match-media";
+
+const MyComponent = () => {
+  const isTouchAndPortrait = useMatchMedia("(pointer: coarse) and (orientation: portrait)");
+   ...
+};
+```
+
+## Using defaultValue
+
+If you want to provide a default value for the initial render (and in server), you can pass a second argument to the hook.
+
+```tsx
+import useMatchMedia from "@buildinams/use-match-media";
+
+const MyComponent = () => {
+  const isMobile = useMatchMedia("(max-width: 768px)", true);
+  ...
+};
+```
+
+Couple things to **note**:
+
+- The default value will only be used on the initial render. By the second render, the hook will use the actual value matched.
+- If left `undefined`, the default value will be `false`.
 
 ## Requirements
 
