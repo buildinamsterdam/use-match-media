@@ -4,13 +4,13 @@
 [![Actions Status][ci-image]][ci-url]
 [![PR Welcome][npm-downloads-image]][npm-downloads-url]
 
-Stateful hook that uses the matchMedia API.
+Stateful hook that uses the matchMedia [API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
 
 ## Introduction
 
-Most match media hooks create a new listener for each use of the hook. This hook instead only creates a new listener if a given query has not been used before. This prevents unnecessary listeners from being created and allows for a more efficient use of the match media API. To achieve this, this hook utilizes a global match media provider to manage queries.
+This hook optimizes the use of the match media API by only creating a new listener when a unique query is made, avoiding the creation of unnecessary listeners and increasing efficiency.
 
-This library is also SSR safe.
+This library is also SSR safe, and a default value can be provided for the initial render.
 
 ## Installation
 
@@ -50,6 +50,14 @@ const MyComponent = () => {
   ...
 };
 ```
+
+## Requirements
+
+This library requires a minimum React version of `18.0.0`.
+
+## Requests and Contributing
+
+Found an issue? Want a new feature? Get involved! Please contribute using our guideline [here](https://github.com/buildinamsterdam/PACKAGE-NAME/blob/main/CONTRIBUTING.md).
 
 [npm-image]: https://img.shields.io/npm/v/@buildinams/use-match-media.svg?style=flat-square&logo=react
 [npm-url]: https://npmjs.org/package/@buildinams/use-match-media
