@@ -66,6 +66,10 @@ Couple things to **note**:
 
 This library requires a minimum React version of `18.0.0`.
 
+## Requests and Contributing
+
+Found an issue? Want a new feature? Get involved! Please contribute using our guideline [here](https://github.com/buildinamsterdam/PACKAGE-NAME/blob/main/CONTRIBUTING.md).
+
 [npm-image]: https://img.shields.io/npm/v/@buildinams/use-match-media.svg?style=flat-square&logo=react
 [npm-url]: https://npmjs.org/package/@buildinams/use-match-media
 [ci-image]: https://github.com/buildinamsterdam/use-match-media/workflows/test/badge.svg
