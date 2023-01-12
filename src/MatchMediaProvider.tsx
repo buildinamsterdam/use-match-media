@@ -66,7 +66,10 @@ const MatchMediaProvider = ({ children }: ProviderProps) => {
       },
 
       getMatchQuery: (query: string, defaultValue = false) => {
-        return queries.current?.[query]?.matchMedia.matches || defaultValue;
+        const current = queries.current[query];
+
+        // If query already exists, return its matches value, else default value
+        return current ? current.matchMedia.matches : defaultValue;
       },
     };
   }, []);
