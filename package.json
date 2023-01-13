@@ -3,6 +3,7 @@
   "description": "Stateful hook that uses the matchMedia API.",
   "version": "0.0.1",
   "license": "MIT",
+  "author": "Build in Amsterdam <development@buildinamsterdam.com> (https://www.buildinamsterdam.com/)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "homepage": "https://github.com/buildinamsterdam/use-match-media#readme",
