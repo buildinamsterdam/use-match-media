@@ -2,4 +2,4 @@
 package-lock.json
 
 # Build
-lib/
+/dist

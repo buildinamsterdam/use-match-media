@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { EventHandler, Query } from "./types";
 
-const queries = new Map<string, Query>();
+export const queries = new Map<string, Query>();
 
 const getExistingMatch = (query: string, defaultValue = false) => {
   const matchedQuery = queries.get(query);

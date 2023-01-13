@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import MatchMediaMock from "jest-matchmedia-mock";
 
-import useMatchMedia from "../lib";
+import useMatchMedia from "../dist";
 
 let matchMedia: MatchMediaMock;
 
