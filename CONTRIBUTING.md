@@ -20,7 +20,7 @@ Then implement your changes!
 
 ## Testing
 
-All tests are performed using `jest` on Node v14, v16 and v18. For a PR to be considered all these environments need to pass. Testing is automated using GitHu Actions CI.
+All tests are performed using `jest` on Node v16 and v18. For a PR to be considered all these environments need to pass. Testing is automated using GitHu Actions CI.
 
 To run tests locally, run:
 
