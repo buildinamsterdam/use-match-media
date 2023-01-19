@@ -44,7 +44,7 @@ const MyComponent = () => {
 };
 ```
 
-## Using defaultValue
+## Using 'defaultValue'
 
 If you want to provide a default value for the initial render (and in server), you can pass a second argument to the hook.
 
