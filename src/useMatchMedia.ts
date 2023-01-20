@@ -103,7 +103,7 @@ const useMatchMedia = (query: string, defaultValue = false) => {
     return () => {
       removeListener(query, listener);
     };
-  }, [query, addListener, removeListener]);
+  }, [query]);
 
   return matches;
 };
