@@ -1,2 +1,2 @@
 export type { EventHandler, Query } from "./types";
-export { default } from "./useMatchMedia";
+export { default as useMatchMedia } from "./useMatchMedia";
