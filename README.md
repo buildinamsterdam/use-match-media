@@ -64,7 +64,7 @@ Couple things to **note**:
 
 ## Requirements
 
-This library requires a minimum React version of `18.0.0`.
+This library requires a minimum React version of `17.0.0`.
 
 ## Requests and Contributing
 
