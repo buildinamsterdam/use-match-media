@@ -5,7 +5,7 @@ import { useIsomorphicEffect } from "./useIsomorphicEffect";
 
 const queries = new Map<string, Query>();
 
-const getExistingMatch = (query: string, defaultValue: boolean) => {
+const getExistingMatch = (query: string, defaultValue = false) => {
   const matchedQuery = queries.get(query);
 
   // If query already exists, return its matched value, else default value
@@ -93,7 +93,7 @@ const removeListener = (query: string, listener: EventHandler) => {
  */
 const useMatchMedia = (query: string, config?: Config) => {
   const [matches, setMatches] = useState(
-    getExistingMatch(query, config?.defaultValue ?? false)
+    getExistingMatch(query, config?.defaultValue)
   );
 
   useIsomorphicEffect(() => {
