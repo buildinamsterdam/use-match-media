@@ -46,21 +46,36 @@ const MyComponent = () => {
 
 ## Using 'defaultValue'
 
-If you want to provide a default value for the initial render (and in server), you can pass a second argument to the hook.
+If you want to provide a default value for the initial render (and in server), you can pass it as `defaultValue` within the _optional_ config object.
 
 ```tsx
 import useMatchMedia from "@buildinams/use-match-media";
 
 const MyComponent = () => {
-  const isMobile = useMatchMedia("(max-width: 768px)", true);
+  const isMobile = useMatchMedia("(max-width: 768px)", { defaultValue: true });
   ...
 };
 ```
 
 Couple things to **note**:
 
-- The default value will only be used on the initial render. By the second render, the hook will use the actual value matched.
+- The default value will only be used on the initial render and SSR. By the second render, the hook will use the actual value matched.
 - If left `undefined`, the default value will be `false`.
+
+## Conditionally Listening to Events
+
+You can conditionally listen to events by passing a `isEnabled` prop in the config object. This accepts a `boolean` value, and will only listen to events if the value is `true` (default). For example:
+
+```tsx
+import useMatchMedia from "@buildinams/use-match-media";
+
+const MyComponent = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  const isMobile = useMatchMedia("(max-width: 768px)", { isEnabled });
+  ...
+};
+```
 
 ## Requirements
 

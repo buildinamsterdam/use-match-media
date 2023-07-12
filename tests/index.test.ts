@@ -50,4 +50,12 @@ describe("The hook", () => {
 
     expect(matchMedia.getListeners(query).length).toEqual(0);
   });
+
+  it("doesn't add event listener if listen is set to 'false' on mount", () => {
+    const query = "(pointer: coarse)";
+
+    renderHook(() => useMatchMedia(query, { isEnabled: false }));
+
+    expect(matchMedia.getListeners(query).length).toEqual(0);
+  });
 });
