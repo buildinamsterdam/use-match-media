@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { EventHandler, Query } from "./types";
+import { Config, EventHandler, Query } from "./types";
+import { useIsomorphicEffect } from "./useIsomorphicEffect";
 
 const queries = new Map<string, Query>();
 
@@ -76,8 +77,9 @@ const removeListener = (query: string, listener: EventHandler) => {
  *
  * @param query - The query to match for.
  *
- * @param defaultValue - Fallback value that is returned in SSR and first match
- * of any unique query. Defaults to `false`.
+ * @param config - Optional configuration object.
+ * @param config.defaultValue - Fallback value that is returned in SSR and first match of any unique query. Defaults to `false`.
+ * @param config.isEnabled - Lets you specify whether to listen for events or not. Defaults to `true`.
  *
  * @example
  * useMatchMedia("(pointer: coarse)") -> Checks if the browser matches coarse;
@@ -89,20 +91,24 @@ const removeListener = (query: string, listener: EventHandler) => {
  * @returns matches - `true` / `false` if the device matches the query, or
  * `defaultValue` as fallback.
  */
-const useMatchMedia = (query: string, defaultValue = false) => {
-  const [matches, setMatches] = useState(getExistingMatch(query, defaultValue));
+const useMatchMedia = (query: string, config?: Config) => {
+  const [matches, setMatches] = useState(
+    getExistingMatch(query, config?.defaultValue)
+  );
 
-  useEffect(() => {
-    const listener = (event: MediaQueryListEvent) => {
-      setMatches(event.matches);
-    };
+  useIsomorphicEffect(() => {
+    if (config?.isEnabled ?? true) {
+      const listener = (event: MediaQueryListEvent) => {
+        setMatches(event.matches);
+      };
 
-    const matches = addListener(query, listener);
-    setMatches(matches);
+      const matches = addListener(query, listener);
+      setMatches(matches);
 
-    return () => {
-      removeListener(query, listener);
-    };
+      return () => {
+        removeListener(query, listener);
+      };
+    }
   }, [query]);
 
   return matches;
