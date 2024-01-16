@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 
 import { Config, EventHandler, Query } from "./types";
-import { useIsomorphicLayoutEffect } from "./useIsomorphicEffect";
+import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
 const QUERIES = new Map<string, Query>();
 

@@ -93,8 +93,6 @@ const MyComponent = () => {
 
 This is SSR safe, and will only use `useLayoutEffect` on the client.
 
-```tsx
-
 ## Requirements
 
 This library requires a minimum React version of `17.0.0`.
@@ -109,4 +107,3 @@ Found an issue? Want a new feature? Get involved! Please contribute using our gu
 [ci-url]: https://github.com/buildinamsterdam/use-match-media/actions
 [npm-downloads-image]: https://img.shields.io/npm/dm/@buildinams/use-match-media.svg
 [npm-downloads-url]: https://npmcharts.com/compare/@buildinams/use-match-media?minimal=true
-```
