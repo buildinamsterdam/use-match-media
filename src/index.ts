@@ -31,7 +31,11 @@ const useMatchMedia = <
 	TConfig extends Config = Config,
 	TDefaultValue extends
 		| TConfig["defaultValue"]
-		| never = TConfig["defaultValue"],
+		| never = TConfig["defaultValue"] extends undefined
+		? undefined
+		: TConfig["defaultValue"] extends null
+			? null
+			: never,
 >(
 	query: string,
 	config?: TConfig,
