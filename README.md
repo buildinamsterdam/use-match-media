@@ -46,13 +46,13 @@ const MyComponent = () => {
 
 ## Using 'defaultValue'
 
-If you want to provide a default value for the initial render (and in server), you can pass it as `defaultValue` within the _optional_ config object.
+If you want to provide a default value for the initial render (and in server), you can pass it as `defaultValue` within the _optional_ config object. This accepts `boolean`, `undefined`, or `null`. For example:
 
 ```tsx
 import useMatchMedia from "@buildinams/use-match-media";
 
 const MyComponent = () => {
-  const isMobile = useMatchMedia("(max-width: 768px)", { defaultValue: true });
+  const isSmall = useMatchMedia("(max-width: 768px)", { defaultValue: true });
   ...
 };
 ```
@@ -60,7 +60,8 @@ const MyComponent = () => {
 Couple things to **note**:
 
 - The default value will only be used on the initial render and SSR. By the second render, the hook will use the actual value matched.
-- If left `undefined`, the default value will be `false`.
+- If theres already a match for the query, the hook will use the actual value matched instead of the default value.
+- If left blank, the default value will be `false`.
 
 ## Conditionally Listening to Events
 
@@ -72,10 +73,25 @@ import useMatchMedia from "@buildinams/use-match-media";
 const MyComponent = () => {
   const [isEnabled, setIsEnabled] = useState(false);
 
-  const isMobile = useMatchMedia("(max-width: 768px)", { isEnabled });
+  const isSmall = useMatchMedia("(max-width: 768px)", { isEnabled });
   ...
 };
 ```
+
+## Using Layout Effect
+
+By default, the hook will use `useEffect` to listen to events. However, you can use `useLayoutEffect` instead by passing `layoutEffect` in the config object. For example:
+
+```tsx
+import useMatchMedia from "@buildinams/use-match-media";
+
+const MyComponent = () => {
+  const isSmall = useMatchMedia("(max-width: 768px)", { layoutEffect: true });
+  ...
+};
+```
+
+This is SSR safe, and will only use `useLayoutEffect` on the client.
 
 ## Requirements
 
