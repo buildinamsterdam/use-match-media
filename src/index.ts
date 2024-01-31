@@ -147,4 +147,4 @@ const useMatchMedia = <
 
 export default useMatchMedia;
 
-export type { EventHandler, Query };
+export type { Config, EventHandler, Query };
